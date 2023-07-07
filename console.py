@@ -2,17 +2,17 @@
 """
 This is the console base for the unit
 """
+import pdb
 import cmd
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 from models import storage
-import json
-import shlex
 from models.user import User
-from models.state import State
 from models.city import City
+from models.state import State
 from models.amenity import Amenity
-from models.place import Place
 from models.review import Review
+from models.place import Place
 
 
 class HBNBCommand(cmd.Cmd):
@@ -37,9 +37,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_EOF(self, arg):
-        """ Close program and saves safely data, when
-        user input is CTRL + D
-        """
+        """ do_EOF CTRL-C to quit """
         print("")
         return True
 
@@ -48,26 +46,19 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
-        """ Creates a new instance of the basemodel class
-        Structure: create [class name]
-        """
-        if not arg:
+
+        if len(arg) == 0:
             print("** class name missing **")
-            return
-        my_data = shlex.split(arg)
-        if my_data[0] not in HBNBCommand.my_dict.keys():
+        elif arg not in HBNBCommand.class_list:
             print("** class doesn't exist **")
-            return
-        new_instance = HBNBCommand.my_dict[my_data[0]]()
-        new_instance.save()
-        print(new_instance.id)
+        else:
+            new_instance = eval(arg)()
+            new_instance.save()
+            print(new_instance.id)
 
     def do_show(self, arg):
-        """
-        Prints the string representation of an instance
-        based on the class name and id
-        Structure: show [class name] [id]
-        """
+        """Show all instances based on the class name"""
+        
         tokens = shlex.split(arg)
         if len(tokens) == 0:
             print("** class name missing **")
