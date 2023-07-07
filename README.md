@@ -40,3 +40,12 @@ If you want to personalize the classes and execute unit tests to confirm that yo
 ```
 python3 -m unittest discover tests
 ```
+
+## Available commands
+|Command| Explanation |
+|--|--|
+| create | Creates a new instance of `BaseModel`, saves it (to the JSON file) and prints the `id`.
+| show | Prints the string representation of an instance based on the class name and `id`.
+| all | Prints all string representation of all instances based or not on the class name. Ex: `$ all BaseModel` |
+| update | Updates an instance based on the class name and `id` by adding or updating attribute (save the change into the JSON file).
+
