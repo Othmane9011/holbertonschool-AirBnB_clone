@@ -7,3 +7,36 @@ In this initial phase of the project, we are developing a simulation of an Airbn
 
 `Storage engine -> Json file.`
 `Console -> cmd with python library cmd.Cmd`
+
+# Requierements 
+Python3 has to be installed :
+```
+sudo apt-get install python3
+```
+# Installation
+
+To have access to the console use the following command:
+
+```
+git clone https://github.com/daorejuela1/AirBnB_clone.git; cd AirBnB_clone
+```
+
+# Run
+
+If you want to execute the console use:
+
+```
+python3 console.py
+```
+or
+```
+./console.py
+```
+
+# Testing 
+
+If you want to personalize the classes and execute unit tests to confirm that your changes haven't modify the functionality use:
+
+```
+python3 -m unittest discover tests
+```
